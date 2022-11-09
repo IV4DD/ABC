@@ -1,0 +1,78 @@
+{% extends 'base/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block PageHeader %}<i class="fas fa-user-md"></i> &nbsp Регистрация нового Врача{% endblock %}
+
+{% block content %}
+<div class="col-lg-12">
+
+    <div class="container mt-3 style="width: 95%; font-size: 14px">
+        <!--Message from backend-->
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <div class="text-center alert alert-success aler-dismissible fade show" role="alert">{{ message }}
+                        <a href="{% url 'home' %}" type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        <form method="POST" class="card p-3 mt-5" autocomplete="off" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-4">
+                    {{ form.first_name|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.middle_name|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.surname|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    {{ form.phone|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.percent|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.department|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    {{ form.email|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.birthday|as_crispy_field }}
+                </div>
+
+                <div class="col-4">
+                    {{ form.profile_pic|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                </div>
+
+                <div class="col-4">
+            <button type="submit" class="btn btn-outline-success mt-3" style="width: 350px;">Зарегистрировать</button>
+                </div>
+
+                <div class="col-4">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base/layout_registration_empty.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Первичная регистрация{% endblock title %}
+
+{% block content %}
+        <style>
+            body,
+            html {
+                margin: 0;
+                height: 100%;
+                background: #ffffff !important;
+            }
+        </style>
+
+    <div class="container-fluid">
+        <div class="container mt-lg-5 mb-lg-5 style="width: 85%;">
+
+            <!--Message from backend-->
+            <div class="text-center">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="text-center alert alert-success aler-dismissible fade show" role="alert">{{ message }}
+                            <a href="{% url 'home' %}" type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <form method="POST" class="card mx-auto p-3 mt-5 primary_card submit_button" style="width: 88%" autocomplete="off" novalidate>
+                {% csrf_token %}
+
+                <span class="btn btn-sm btn-success mb-5 mt-3 mx-auto" style="cursor: default; border-color: white; width: 100%;">
+                    <p class="fs-5  mt-2"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;&nbsp;Регистрация нового сотрудника</p>
+                </span>
+                    <br>
+
+                    <div class="row mx-auto" style="width: 100%">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-4">
+                            {{ form.surname|as_crispy_field }}
+                        </div>
+                        <div class="col-1">
+                        </div>
+                        <div class="col-3">
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                    <div class="row mx-auto" style="width: 100%">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-4">
+                            {{ form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-1">
+                        </div>
+                        <div class="col-3">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                    <div class="row mx-auto" style="width: 100%">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-4">
+                            {{ form.middle_name|as_crispy_field }}
+                        </div>
+                        <div class="col-1">
+                        </div>
+                        <div class="col-3">
+                            {{ form.dob|as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+
+                    <br>
+                    <hr class="mx-auto" style="color: #65a82f; width: 49%">
+                    <br>
+
+                    <div class="row mx-auto" style="width: 100%">
+
+                        <div class="col-4">
+                        </div>
+                        <div class="col-4">
+                            {{ form.password1|as_crispy_field }}
+                        </div>
+                        <div class="col-4">
+                        </div>
+                    </div>
+
+                    <div class="row mx-auto" style="width: 100%">
+
+                        <div class="col-4">
+                        </div>
+                        <div class="col-4">
+                            {{ form.password2|as_crispy_field }}
+                        </div>
+                        <div class="col-4">
+                        </div>
+
+                    </div>
+                    <br><br>
+
+                    <div class="row mx-auto" style="width: 29%">
+                        <button type="submit" class="btn btn-success mx-auto mt-3 mb-3 submit_button" style="width: 90%;">Зарегистрировать</button>
+                    </div>
+            </form>
+
+            <div class="row mt-lg-3">
+                <div class="col-8 text-end">
+                </div>
+                <div class="col-2 text-end">
+                    <a href="{% url 'welcome'%}" style="width: 80%" class="btn btn-outline-danger mt-3 mb-3 text-md-center bottom_button">Выйти</a>
+                </div>
+                <div class="col-2">
+                    <a href="{% url 'primary_registration'%}" style="width: 80%" class="btn btn-outline-warning mt-3 mb-3 text-md-center bottom_button">Обновить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

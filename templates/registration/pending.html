@@ -1,0 +1,39 @@
+{% extends 'base/layout_registration_empty.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Первичная регистрация{% endblock title %}
+
+{% block content %}
+        <style>
+            body,
+            html {
+                margin: 0;
+                height: 100%;
+                background: #ffffff !important;
+            }
+            .primary_card {
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+                -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        </style>
+
+    <div class="container-fluid">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container mt-lg-5 mb-lg-5 style="width: 85%;">
+        <div class="card primary_card"></div>
+        <br>
+        <span class="btn btn-sm btn-success mb-5 mt-3 mx-auto primary_card" style="cursor: default; width: 100%;">
+            <p class="fs-1  mt-2"><i class="fas fa-check-circle"></i>&nbsp;&nbsp;&nbsp;</p>
+            <p class="fs-3  mt-2">&nbsp;&nbsp;&nbsp;Ваша заявка на регистрацию отправлена на рассмотрение.</p>
+            <p class="fs-3  mt-2">&nbsp;&nbsp;&nbsp;После рассмотрения Вам будет выслано письмо с подтверждением.</p>
+        </span>
+        <div class="card primary_card"></div>
+    </div>
+
+{% endblock content %}
+
+

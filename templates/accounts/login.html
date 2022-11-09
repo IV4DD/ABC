@@ -1,0 +1,91 @@
+{% extends "accounts/accountsBasic.html" %}
+
+{% block title %}
+    Войти в систему
+{% endblock %}
+
+{% block content %}
+    <div class="form-form-wrap">
+        <div class="form-container">
+            <div class="form-content">
+                <h1 class="">Войти</h1>
+                <p class="">Введите Ваши данные чтобы продолжить.</p>
+                <form class="text-left" method="post">
+                    {% csrf_token %}
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+
+                    {% if login_form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ login_form.non_field_errors.as_text }}
+                        </div>
+                    {% endif %}
+
+                    <div class="form">
+                        <div id="username-field" class="field-wrapper input">
+                            <label for="username">Номер сотового</label>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" class="feather feather-at-sign register" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.554 6.24L7.171 2.335c-.39-.45-1.105-.448-1.558.006L2.831 5.128c-.828.829-1.065 2.06-.586 3.047a29.207 29.207 0 0 0 13.561 13.58c.986.479 2.216.242 3.044-.587l2.808-2.813c.455-.455.456-1.174.002-1.564l-3.92-3.365c-.41-.352-1.047-.306-1.458.106l-1.364 1.366a.462.462 0 0 1-.553.088a14.557 14.557 0 0 1-5.36-5.367a.463.463 0 0 1 .088-.554l1.36-1.361c.412-.414.457-1.054.101-1.465Z"/>
+                            </svg>
+                            <input id="username" name="username" type="text" value="" class="form-control"
+                                   placeholder="Введите Ваш сотовый...">
+
+                            {% if login_form.username.help_text %}
+                                <small>{{ login_form.username.help_text }}</small>
+                            {% endif %}
+                            {% if login_form.username.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ login_form.username.errors.as_text }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div id="password-field" class="field-wrapper input mb-2">
+                            <div class="d-flex justify-content-between">
+                                <label for="password">Пароль</label>
+                                <a href="#" class="forgot-pass-link">Забыли пароль?</a>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-lock">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <input id="password" name="password" type="password" class="form-control"
+                                   placeholder="Введите пароль...">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" id="toggle-password" class="feather feather-eye">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+
+                            {% if login_form.password.help_text %}
+                                <small>{{ login_form.password.help_text }}</small>
+                            {% endif %}
+                            {% if login_form.password.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ login_form.password.errors.as_text }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="d-sm-flex justify-content-between">
+                            <div class="field-wrapper">
+                                <button type="submit" class="btn btn-success" value="">Login</button>
+                            </div>
+                        </div>
+
+                        <div class="division">
+                            <p class="signup-link">Ещё не зарегистрированы?? &nbsp; <a href="{% url 'register' %}">Создать новый Аккаунт</a></p>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base/layout_registration_empty.html' %}
+
+{% block title %}Добро пожаловать{% endblock title %}
+
+
+{% block Topper %}
+          <h2> Добро пожаловать в систему учета сотрудников</h2>
+            <br>
+          <h6>- Dobro Dent - Dobro Medical - Dentarium - Sun Dental - </h6>
+{% endblock %}
+
+
+
+{% block content %}
+
+    <br>
+    <div class="container card p-3 text-center mt-5 primary_card">
+        <br>
+        <div class="d-grid gap-2 mt-4">
+
+            <div class="container mt-1">
+                <div class="row mx-auto" style="width: 100%">
+
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-3"></div>
+
+                    <div class="col-sm-4">
+                        <div class="col">
+                            <span class="text-center">
+                                <h4 style="color: #f3f1f1" >
+                                    <p>
+                                        <a href="{% url 'login' %}" class="btn btn-lg btn-success primary_card" style="width: 100%; color: white; background-color: #65a82f">Войти в систему</a>
+                                    </p>
+                                </h4>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3" ></div>
+                    <div class="col-sm-1"></div>
+
+                </div>
+            </div>
+            <div class="container mt-1">
+                <div class="row mx-auto" style="width: 80%">
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-3"></div>
+
+                    <div class="col-sm-4">
+                        <div class="col">
+                            <span class="text-center">
+                                    <p>
+                                        <a href="{% url 'primary_registration' %}" class="btn btn-lg primary_card" style="width: 100%; color: white; background-color: #65a82f">Регистрация</a>
+                                    </p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-1">
+                <div class="row mx-auto" style="width: 80%">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-3"></div>
+
+                    <div class="col-sm-4">
+                        <div class="col">
+                            <span class="text-center">
+                                <h4 style="color: #f3f1f1" >
+                                    <p>
+                                        <a href="{% url 'register' %}" class="btn btn-lg btn-success primary_card" style="width: 100%; color: white; background-color: #65a82f">Заполнить анкету</a>
+                                    </p>
+                                </h4>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3" ></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        <br>
+
+
+        <hr class="mx-auto" style="width: 80%">
+
+        <div class="card text-secondary text-center bg-light card-body mt-5 mb-lg-5 mx-auto primary_card" style="width: 90%">
+            <span class="text-center mt-3">
+                <p class="fs-4 " style="color: #a1a1a2">Самая могущественная вещь на свете — организованное сообщество людей.</p>>
+        <br>
+                <p class="fs-5 text-lg-center" style="color: #a1a1a2; width: 140%"><em>Этим мы и занимаемся.</em></p>
+            </span>
+        </div>
+    </div>
+    {% endblock %}

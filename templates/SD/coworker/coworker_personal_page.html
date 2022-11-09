@@ -1,0 +1,91 @@
+
+class CoworkerForm(forms.ModelForm):
+    # Validations
+    first_name = CapitalizeInputForm(
+        label='Ваше имя:',
+        max_length=20,
+        min_length=2,
+        validators=[RegexValidator(r'^[а-яА-Яё\s]*$', message="Допустимы только кириллические буквы!")],
+        widget=forms.TextInput(attrs={'placeholder': 'Абдумажит'})
+    )
+    middle_name = CapitalizeInputForm(
+        label='Отчество',
+        max_length=20,
+        min_length=2,
+        validators=[RegexValidator(r'^[а-яА-Яё\s]*$', message="Допустимы только кириллические буквы!")],
+        widget=forms.TextInput(attrs={'placeholder': 'Абдукадырович'})
+    )
+    surname = CapitalizeInputForm(
+        label='Фамилия',
+        max_length=20,
+        min_length=2,
+        validators=[RegexValidator(r'^[а-яА-Яё\s]*$', message="Допустимы только кириллические буквы!")],
+        widget=forms.TextInput(attrs={'placeholder': 'Касымов'})
+    )
+
+    email = Lowercase(
+        label='Адрес электронной почты:',
+        max_length=50,
+        min_length=7,
+        validators=[RegexValidator(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$',
+                                   message="Проверьте правильность ввода E-Mail адресса!")],
+        widget=forms.TextInput(attrs={'placeholder': 'E-mail*'})
+    )
+
+    birthday = forms.DateField(
+        label='Выберите дату рождения:',
+        widget=SelectDateWidget(years=range(1950, datetime.date.today().year + 1)),
+        required=True
+    )
+
+
+    comment = forms.CharField(
+        label=' Дополнительная информация:',
+        max_length=200,
+        min_length=5,
+        required=False,
+        validators=[RegexValidator(r'^[а-яА-Яё\s]*$', message="Допустимы только кириллические буквы!")],
+        widget=forms.Textarea(
+            attrs={'placeholder': 'Введите текст в произвольной форме',
+                   'rows': 4})
+
+    )
+    profile_pic = forms.ImageField(
+        label='Ваше фото (не обязательно):',
+        required=False,
+    )
+
+    class Meta:
+        model = Coworker
+        exclude = ['Situation', 'date_created', 'salary',]
+
+        DEPARTMENTS = [
+            ('DD¹', 'DD¹'),
+            ('DD²', 'DD²'),
+            ('DD³', 'DD³'),
+            ('DD⁴', 'DD⁴'),
+            ('DD⁵', 'DD⁵'),
+            ('SD', 'SD'),
+            ('Marketing Team', 'Marketing Team'),
+            ('Call Center', 'Call Center'),
+            ('DT', 'DT'),
+            ('DM', 'DM'),
+            ('Снабжение', 'Снабжение'),
+            ('Офис', 'Офис'),
+            ('Другое...', 'Другое...'),
+        ]
+
+        widgets = {
+            'phone': forms.TextInput(
+                attrs={
+                    'placeholder': 'Телефон',
+                    'data-mask': '(000) 000 00 00',
+                }
+            ),
+            'department': forms.Select(
+                choices=DEPARTMENTS,
+                attrs={
+                    'class': 'form-control',
+                }
+            )
+        }

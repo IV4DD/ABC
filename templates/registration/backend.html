@@ -1,0 +1,87 @@
+{% extends 'base/layout_registration_empty.html' %}
+
+{# Page Content #}
+{% block content %}
+<div class="container" style="width: 80%; font-size: 14px;">
+
+
+    <!-- Header -->
+    <span class="btn btn-success mb-4 mt-4 text-md-start" style="cursor: default; width: 100%;">
+        <h5><i class="fas fa-user-check"></i>&nbsp;&nbsp;&nbsp;Список сотрудников на утверждение:</h5>
+    </span>
+    <!-- Table -->
+    <table class="table table-borderless table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 15%">ФИО</th>
+                <th style="width: 15%">Номер сотового</th>
+                <th style="width: 10%">E-mail</th>
+                <th style="width: 15%">Регистрация</th>
+                <th style="width: 15%">Авторизация</th>
+                <th style="width: 15%">Статус</th>
+                <th class="text-md-center" colspan="2" style="width: 15%">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.FIO }}</td>
+                    <td>{{ account.username }}</td>
+                    <td>{{ account.email }}</td>
+                    <td>{{ account.date_joined }}</td>
+                    <td>{{ account.last_login }}</td>
+                    <td>{{ account.status }}</td>
+                    <td class="text-md-center">
+                        <a href="{% url 'account_personal_page' account.username %}"
+                           style="width: 60%; text-align: center;"
+                           class="btn btn-outline-success btn-sm"><i class="fas fa-user-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+        <!-- Button -->
+        <div class="row mt-lg-3">
+            <div class="col-8 text-end">
+            </div>
+            <div class="col-2 text-end">
+            </div>
+            <div class="col-2">
+                <a href="{% url 'backend'%}" style="width: 100%" class="btn btn-outline-danger mt-3 mb-3 text-md-center">Выйти</a>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
+
+
+{% comment %}
+    <br>
+    <br>
+    <br>
+    <div class="container card p-3 border-secondary text-center mt-lg-5 style="width: 55%;">
+        <div class="card text-white bg-success card-body mt-4"">
+            <span class="text-center">
+                <h4 style="color: #f3f1f1" >
+                    {% block PageHeader %}
+                        <h1>
+                        </h1>
+                        <h3>
+                        {% now "n E Y" %}
+                        </h3>
+                    {% endblock %}
+                </h4>
+            </span>
+        </div>
+    <br>
+
+    <hr>
+    <div class="d-grid gap-2 mt-4">
+        <a href="{% url 'register' %}" class="btn btn-lg btn-outline-secondary">Регистрация</a>
+        <a href="{% url 'login' %}" class="btn btn-lg btn-outline-secondary">Войти в систему</a>
+    </div>
+</div>
+{% endcomment %}
+

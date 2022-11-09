@@ -1,0 +1,35 @@
+{% extends 'base/layout_registration_empty.html' %}
+{% load crispy_forms_tags %}
+
+
+    {% block title %}Вход в систему{% endblock title %}
+
+
+    {% block Topper %}
+          <h2>&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+    {% endblock %}
+
+
+    {% block content %}
+        <br>
+        <br>
+        <br>
+    <div class="container card p-3 border-start mt-5" style="width: 30%; ">
+
+        <a class="btn btn-lg mb-4" style="cursor: default; color: white; background-color: #65a82f">
+            <i class="fas fa-lock"></i>&nbsp;&nbsp; ВВЕДИТЕ ВАШИ ДАННЫЕ
+        </a>
+
+        <form method="post" autocomplete="off" novalidate>
+            {% csrf_token %}
+            {{ form.username|as_crispy_field }}
+            {{ form.password|as_crispy_field }}
+            <br>
+            <hr>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-outline btn-block" style="color: white; background-color: #65a82f">Войти</button>
+                <a href="{% url 'welcome' %}" class="btn btn-outline-secondary ">Выйти</a>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
